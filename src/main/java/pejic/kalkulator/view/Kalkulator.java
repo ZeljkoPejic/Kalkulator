@@ -7,6 +7,7 @@ package pejic.kalkulator.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import pejic.kalkulator.obrada.ObradaKalkulator;
 
 /**
  *
@@ -320,28 +321,38 @@ public class Kalkulator extends javax.swing.JFrame {
 
     private void btnAdditionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdditionActionPerformed
         // TODO add your handling code here:
-        
+        zapis.add(broj);
+        zapis.add("+");
+        broj="";
     }//GEN-LAST:event_btnAdditionActionPerformed
 
     private void btnSubtractionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubtractionActionPerformed
         // TODO add your handling code here:
-        
+        zapis.add(broj);
+        zapis.add("-");
+        broj="";
     }//GEN-LAST:event_btnSubtractionActionPerformed
 
     private void btnMultiplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultiplicationActionPerformed
         // TODO add your handling code here:
-        
+        zapis.add(broj);
+        zapis.add("*");
+        broj="";
     }//GEN-LAST:event_btnMultiplicationActionPerformed
 
     private void btnDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDivisionActionPerformed
         // TODO add your handling code here:
-        
+        zapis.add(broj);
+        zapis.add("/");
+        broj="";
     }//GEN-LAST:event_btnDivisionActionPerformed
 
     private void btnEqualsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEqualsActionPerformed
         // TODO add your handling code here:
-        //container.add("=");
-        
+                zapis.add(broj);
+                broj="";
+                lblPrikaz.setText(String.valueOf(ObradaKalkulator.obrada(zapis)));
+                zapis.clear();
     }//GEN-LAST:event_btnEqualsActionPerformed
 
 

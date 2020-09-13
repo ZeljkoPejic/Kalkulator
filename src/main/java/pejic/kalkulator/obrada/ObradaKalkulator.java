@@ -5,6 +5,9 @@
  */
 package pejic.kalkulator.obrada;
 
+import java.util.Iterator;
+import java.util.List;
+
 /**
  *
  * @author Pejić
@@ -12,5 +15,54 @@ package pejic.kalkulator.obrada;
 public class ObradaKalkulator {
     
     
+    public static int obrada(List<String> zapis){
+        
+        Iterator<String> itr = zapis.iterator();
+        Integer rezultat=0;
+        
+        
+        
+        
+        for(int i=0;i<zapis.size()-1;i++){
+            
+            if(zapis.get(i).equals("/")){
+            
+                rezultat/=Integer.parseInt(zapis.get(i+1));
+                i++;
+                continue;
+                
+            }
+            if(zapis.get(i).equals("*")){
+            
+                rezultat*=Integer.parseInt(zapis.get(i+1));
+                i++;
+                continue;
+                
+            }
+            if(zapis.get(i).equals("+")){
+            
+                rezultat+=Integer.parseInt(zapis.get(i+1));
+                i++;
+                continue;
+                                               
+            }
+            if(zapis.get(i).equals("-")){
+            
+                rezultat-=Integer.parseInt(zapis.get(i+1));
+                i++;
+                
+                
+            }else{
+            
+                rezultat=Integer.parseInt(zapis.get(i));
+            }
+            
+        }
+       
+        return rezultat;
+        
+        
+        
+    }
     
 }
