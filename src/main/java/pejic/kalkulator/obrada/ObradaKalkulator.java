@@ -5,6 +5,8 @@
  */
 package pejic.kalkulator.obrada;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.List;
 
@@ -15,54 +17,61 @@ import java.util.List;
 public class ObradaKalkulator {
     
     
-    public static int obrada(List<String> zapis){
+    public static String obrada(List<Double> zapisOne,List<String> zapisTwo){
         
-        Iterator<String> itr = zapis.iterator();
-        Integer rezultat=0;
-        
-        
-        
-        
-        for(int i=0;i<zapis.size()-1;i++){
-            
-            if(zapis.get(i).equals("/")){
-            
-                rezultat/=Integer.parseInt(zapis.get(i+1));
-                i++;
-                continue;
+        DecimalFormat df = new DecimalFormat("0.#");
+        Double rezultat;
+        int x=0;
                 
-            }
-            if(zapis.get(i).equals("*")){
+             
+        while(true){
             
-                rezultat*=Integer.parseInt(zapis.get(i+1));
-                i++;
-                continue;
+            if(zapisTwo.contains("/")){
                 
+                x=zapisTwo.indexOf("/");
+                rezultat=zapisOne.get(x)/zapisOne.get(x+1);
+                zapisOne.remove(x+1);
+                zapisOne.remove(x);
+                zapisTwo.remove(x);
+                zapisOne.add(rezultat);
             }
-            if(zapis.get(i).equals("+")){
-            
-                rezultat+=Integer.parseInt(zapis.get(i+1));
-                i++;
-                continue;
-                                               
-            }
-            if(zapis.get(i).equals("-")){
-            
-                rezultat-=Integer.parseInt(zapis.get(i+1));
-                i++;
+            if(zapisTwo.contains("*")){
                 
+                x=zapisTwo.indexOf("*");
+                rezultat=zapisOne.get(x)*zapisOne.get(x+1);
+                zapisOne.remove(x+1);
+                zapisOne.remove(x);
+                zapisTwo.remove(x);
+                zapisOne.add(rezultat);
+            }
+            if(zapisTwo.contains("+")){
                 
-            }else{
-            
-                rezultat=Integer.parseInt(zapis.get(i));
+                x=zapisTwo.indexOf("+");
+                rezultat=zapisOne.get(x)+zapisOne.get(x+1);
+                zapisOne.remove(x+1);
+                zapisOne.remove(x);
+                zapisTwo.remove(x);
+                zapisOne.add(rezultat);
+            }
+            if(zapisTwo.contains("-")){
+                
+                x=zapisTwo.indexOf("-");
+                rezultat=zapisOne.get(x)-zapisOne.get(x+1);
+                zapisOne.remove(x+1);
+                zapisOne.remove(x);
+                zapisTwo.remove(x);
+                zapisOne.add(rezultat);
             }
             
+            if(zapisTwo.isEmpty()){
+                rezultat=zapisOne.get(0);
+                break;
+            }
+          
         }
-       
-        return rezultat;
         
-        
-        
+        return df.format(rezultat);
+               
     }
     
 }

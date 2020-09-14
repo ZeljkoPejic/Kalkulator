@@ -15,7 +15,8 @@ import pejic.kalkulator.obrada.ObradaKalkulator;
  */
 public class Kalkulator extends javax.swing.JFrame {
 
-    private List<String> zapis = new ArrayList<>();
+    private List<Double> zapisBrojeva = new ArrayList<>();
+    private List<String> zapisOperatora = new ArrayList<>();
     private String broj = "";
     
     /**
@@ -321,38 +322,43 @@ public class Kalkulator extends javax.swing.JFrame {
 
     private void btnAdditionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdditionActionPerformed
         // TODO add your handling code here:
-        zapis.add(broj);
-        zapis.add("+");
+        zapisBrojeva.add(Double.parseDouble(broj));
+        zapisOperatora.add("+");
         broj="";
     }//GEN-LAST:event_btnAdditionActionPerformed
 
     private void btnSubtractionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubtractionActionPerformed
         // TODO add your handling code here:
-        zapis.add(broj);
-        zapis.add("-");
+        zapisBrojeva.add(Double.parseDouble(broj));
+        zapisOperatora.add("-");
         broj="";
     }//GEN-LAST:event_btnSubtractionActionPerformed
 
     private void btnMultiplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultiplicationActionPerformed
         // TODO add your handling code here:
-        zapis.add(broj);
-        zapis.add("*");
+        zapisBrojeva.add(Double.parseDouble(broj));
+        zapisOperatora.add("*");
         broj="";
     }//GEN-LAST:event_btnMultiplicationActionPerformed
 
     private void btnDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDivisionActionPerformed
         // TODO add your handling code here:
-        zapis.add(broj);
-        zapis.add("/");
+        zapisBrojeva.add(Double.parseDouble(broj));
+        zapisOperatora.add("/");
         broj="";
     }//GEN-LAST:event_btnDivisionActionPerformed
 
     private void btnEqualsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEqualsActionPerformed
         // TODO add your handling code here:
-                zapis.add(broj);
+        if(!broj.isEmpty()){
+                zapisBrojeva.add(Double.parseDouble(broj));
                 broj="";
-                lblPrikaz.setText(String.valueOf(ObradaKalkulator.obrada(zapis)));
-                zapis.clear();
+                lblPrikaz.setText(String.valueOf(ObradaKalkulator.obrada(zapisBrojeva, zapisOperatora)));
+                zapisBrojeva.clear();
+                zapisOperatora.clear();
+        }else{
+            lblPrikaz.setText("0");
+        }
     }//GEN-LAST:event_btnEqualsActionPerformed
 
 
