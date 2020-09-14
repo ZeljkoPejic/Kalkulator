@@ -49,24 +49,46 @@ public class ObradaKalkulator {
 
             }
 
-            if (zapisTwo.contains("+")) {
+            while(zapisTwo.iterator().hasNext()){
+                
+                if (zapisTwo.iterator().next().equals("+")) {
 
                 x = zapisTwo.indexOf("+");
                 rezultat = zapisOne.get(x) + zapisOne.get(x + 1);
                 zapisOne.remove(x + 1);
                 zapisOne.remove(x);
                 zapisTwo.remove(x);
-                zapisOne.add(rezultat);
-            }
-            if (zapisTwo.contains("-")) {
-
-                x = zapisTwo.indexOf("-");
+                zapisOne.add(x, rezultat);
+            }else{
+                     x = zapisTwo.indexOf("-");
                 rezultat = zapisOne.get(x) - zapisOne.get(x + 1);
                 zapisOne.remove(x + 1);
                 zapisOne.remove(x);
                 zapisTwo.remove(x);
-                zapisOne.add(rezultat);
+                zapisOne.add(x, rezultat);
+                }
+                
             }
+            
+            
+//            if (zapisTwo.contains("+")) {
+//
+//                x = zapisTwo.indexOf("+");
+//                rezultat = zapisOne.get(x) + zapisOne.get(x + 1);
+//                zapisOne.remove(x + 1);
+//                zapisOne.remove(x);
+//                zapisTwo.remove(x);
+//                zapisOne.add(x, rezultat);
+//            }
+//            if (zapisTwo.contains("-")) {
+//
+//                x = zapisTwo.indexOf("-");
+//                rezultat = zapisOne.get(x) - zapisOne.get(x + 1);
+//                zapisOne.remove(x + 1);
+//                zapisOne.remove(x);
+//                zapisTwo.remove(x);
+//                zapisOne.add(x, rezultat);
+//            }
 
             if (zapisTwo.isEmpty()) {
                 rezultat = zapisOne.get(0);
